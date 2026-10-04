@@ -1,0 +1,82 @@
+{
+  "scope": "Seven new key parts; geometry only, not physical validation",
+  "results": [
+    {
+      "part": "base",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 191993.87955763531,
+      "extents_mm": [
+        150.0,
+        150.0,
+        9.0
+      ]
+    },
+    {
+      "part": "lower_rotor",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 8132.036835881522,
+      "extents_mm": [
+        34.0,
+        34.0,
+        9.0
+      ]
+    },
+    {
+      "part": "main_gear",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 16770.57562059768,
+      "extents_mm": [
+        64.9998,
+        64.9224,
+        6.0
+      ]
+    },
+    {
+      "part": "motor_gear",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 3891.0922457880365,
+      "extents_mm": [
+        33.664,
+        33.7254,
+        6.0
+      ]
+    },
+    {
+      "part": "motor_plate",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 9859.4176060768,
+      "extents_mm": [
+        44.0,
+        64.0,
+        4.0
+      ]
+    },
+    {
+      "part": "platform",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 23467.415217069403,
+      "extents_mm": [
+        80.0,
+        80.0,
+        5.0
+      ]
+    },
+    {
+      "part": "upper_rotor",
+      "watertight": true,
+      "components": 1,
+      "volume_mm3": 13914.818585841713,
+      "extents_mm": [
+        34.0,
+        34.0,
+        15.4
+      ]
+    }
+  ]
+}

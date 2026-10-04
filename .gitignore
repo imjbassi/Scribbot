@@ -1,0 +1,11 @@
+# Zipped copies of the stage folders (the folders themselves are in the repo)
+*.zip
+# Render and export logs
+*.log
+# Personal photos
+PRINT-NEXT-MOTOR-MOUNT/YOUR_PHOTO_MOUNT_LOCATIONS.png
+design/shoulder-stage/carrier_on_your_photo.png
+# OS clutter
+Thumbs.db
+desktop.ini
+.DS_Store

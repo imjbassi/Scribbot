@@ -1,0 +1,79 @@
+[
+ {
+  "file": "02_shoulder_carrier.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   66.0,
+   62.0,
+   67.6
+  ],
+  "volume_cm3": 61.8
+ },
+ {
+  "file": "03_bearing_housing.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   34.0,
+   34.0,
+   9.0
+  ],
+  "volume_cm3": 7.8
+ },
+ {
+  "file": "04_bearing_cap.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   34.0,
+   34.0,
+   2.0
+  ],
+  "volume_cm3": 1.8
+ },
+ {
+  "file": "05_lever_cheek_A_hub_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   152.0,
+   48.0,
+   5.0
+  ],
+  "volume_cm3": 23.7
+ },
+ {
+  "file": "06_lever_cheek_B_bearing_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   137.0,
+   18.0,
+   5.0
+  ],
+  "volume_cm3": 11.1
+ },
+ {
+  "file": "07_lever_rung_PRINT_3.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   80.5,
+   12.0,
+   12.0
+  ],
+  "volume_cm3": 10.8
+ },
+ {
+  "file": "08_axle_spacers.stl",
+  "watertight": true,
+  "bodies": 6,
+  "extents": [
+   63.0,
+   8.0,
+   8.0
+  ],
+  "volume_cm3": 0.5
+ }
+]

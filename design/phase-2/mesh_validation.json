@@ -1,0 +1,57 @@
+[
+  {
+    "file": "bearings.stl",
+    "watertight": true,
+    "bounds_mm": [
+      102.0,
+      30.0,
+      5.5
+    ],
+    "components": 4,
+    "positive_volume": true
+  },
+  {
+    "file": "mg90s.stl",
+    "watertight": true,
+    "bounds_mm": [
+      34.8,
+      70.6,
+      4.5
+    ],
+    "components": 3,
+    "positive_volume": true
+  },
+  {
+    "file": "mg996r.stl",
+    "watertight": true,
+    "bounds_mm": [
+      52.7,
+      93.1,
+      4.5
+    ],
+    "components": 3,
+    "positive_volume": true
+  },
+  {
+    "file": "note_holder.stl",
+    "watertight": true,
+    "bounds_mm": [
+      85.2,
+      107.2,
+      2.6
+    ],
+    "components": 1,
+    "positive_volume": true
+  },
+  {
+    "file": "slide.stl",
+    "watertight": true,
+    "bounds_mm": [
+      82.0,
+      32.0,
+      6.5
+    ],
+    "components": 4,
+    "positive_volume": true
+  }
+]

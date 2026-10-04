@@ -1,0 +1,101 @@
+[
+  {
+    "file": "01_base.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      150.0,
+      150.0,
+      9.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "02_fixed_pedestal.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      22.0,
+      22.0,
+      20.2
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "03_lower_rotor.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      34.0,
+      34.0,
+      9.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "04_large_gear.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      64.9998,
+      64.9224,
+      6.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "05_upper_rotor.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      34.0,
+      34.0,
+      15.4
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "06_bearing_cap.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      34.0,
+      34.0,
+      2.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "07_top_platform.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      80.0,
+      80.0,
+      5.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "08_inner_spacer_18mm.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      9.0,
+      9.0,
+      18.0
+    ],
+    "positive_volume": true
+  },
+  {
+    "file": "09_top_spacer_10mm.stl",
+    "watertight": true,
+    "components": 1,
+    "extents_mm": [
+      9.0,
+      9.0,
+      10.0
+    ],
+    "positive_volume": true
+  }
+]

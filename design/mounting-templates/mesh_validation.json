@@ -1,0 +1,24 @@
+[
+  {
+    "file": "mg90s_mounting_templates.stl",
+    "watertight": true,
+    "bounds_mm": [
+      82.0,
+      83.0,
+      2.4
+    ],
+    "components": 5,
+    "positive_volume": true
+  },
+  {
+    "file": "mg996r_mounting_templates.stl",
+    "watertight": true,
+    "bounds_mm": [
+      128.0,
+      168.0,
+      2.4
+    ],
+    "components": 9,
+    "positive_volume": true
+  }
+]

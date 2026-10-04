@@ -1,0 +1,79 @@
+[
+ {
+  "file": "01_hub_PRINT_1_MORE.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   44.0,
+   44.0,
+   7.0
+  ],
+  "volume_cm3": 8.3
+ },
+ {
+  "file": "03_bearing_housing_PRINT_1_MORE.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   34.0,
+   34.0,
+   9.0
+  ],
+  "volume_cm3": 7.8
+ },
+ {
+  "file": "04_bearing_cap_PRINT_1_MORE.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   34.0,
+   34.0,
+   2.0
+  ],
+  "volume_cm3": 1.8
+ },
+ {
+  "file": "08_axle_spacers_PRINT_1_MORE.stl",
+  "watertight": true,
+  "bodies": 6,
+  "extents": [
+   63.0,
+   8.0,
+   8.0
+  ],
+  "volume_cm3": 0.5
+ },
+ {
+  "file": "09_elbow_bracket.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   35.0,
+   80.5,
+   85.0
+  ],
+  "volume_cm3": 59.2
+ },
+ {
+  "file": "10_upper_cheek_A_hub_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   96.0,
+   48.0,
+   5.0
+  ],
+  "volume_cm3": 18.2
+ },
+ {
+  "file": "11_upper_cheek_B_bearing_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   81.0,
+   32.0,
+   5.0
+  ],
+  "volume_cm3": 10.0
+ }
+]

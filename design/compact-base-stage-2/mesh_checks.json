@@ -1,0 +1,22 @@
+[
+  {
+    "file": "posts_set_of_4.stl",
+    "solid_count": 4,
+    "watertight": true,
+    "extents_mm": [
+      34.0,
+      34.0,
+      10.0
+    ]
+  },
+  {
+    "file": "shoes_set_of_4.stl",
+    "solid_count": 4,
+    "watertight": true,
+    "extents_mm": [
+      26.4,
+      42.0,
+      1.0
+    ]
+  }
+]

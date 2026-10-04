@@ -1,0 +1,90 @@
+{
+  "meshes": [
+    {
+      "file": "01_base_v1.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 1,
+      "size_mm": [
+        150.0,
+        150.0,
+        9.4
+      ]
+    },
+    {
+      "file": "02_bearing_deck.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 1,
+      "size_mm": [
+        88.0,
+        88.0,
+        4.0
+      ]
+    },
+    {
+      "file": "03_lower_posts_4x.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 4,
+      "size_mm": [
+        36.0,
+        36.0,
+        55.0
+      ]
+    },
+    {
+      "file": "04_upper_posts_4x.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 4,
+      "size_mm": [
+        36.0,
+        36.0,
+        31.0
+      ]
+    },
+    {
+      "file": "05_rotating_platform.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 1,
+      "size_mm": [
+        80.0,
+        80.0,
+        20.0
+      ]
+    },
+    {
+      "file": "06_bearing_carrier.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 1,
+      "size_mm": [
+        34.0,
+        34.0,
+        9.0
+      ]
+    },
+    {
+      "file": "07_bearing_cap.stl",
+      "watertight": true,
+      "positive_volume": true,
+      "components": 1,
+      "size_mm": [
+        34.0,
+        34.0,
+        2.0
+      ]
+    }
+  ],
+  "geometry": {
+    "bearing_center_spacing_mm": 35.0,
+    "upper_collar_to_platform_hub_gap_mm": 2.200000000000003,
+    "radial_platform_to_column_clearance_mm": 2.911688245431421,
+    "frame_fastener_stack_including_nut_mm": 103.0,
+    "shaft_top_mm": 145,
+    "platform_top_mm": 142,
+    "notes": "Analytical envelope checks only; not full collision, strength or motion validation."
+  }
+}

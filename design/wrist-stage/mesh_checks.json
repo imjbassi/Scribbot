@@ -1,0 +1,86 @@
+[
+ {
+  "file": "12_forearm_cheek_A_hub_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   118.0,
+   48.0,
+   5.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 19.0
+ },
+ {
+  "file": "13_forearm_cheek_B_bearing_side.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   103.0,
+   28.0,
+   5.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 10.7
+ },
+ {
+  "file": "14_wrist_bracket.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   27.0,
+   80.5,
+   53.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 23.3
+ },
+ {
+  "file": "15_pen_holder_arm_A.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   65.0,
+   51.0,
+   4.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 7.4
+ },
+ {
+  "file": "16_pen_holder_body.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   60.0,
+   46.0,
+   45.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 29.5
+ },
+ {
+  "file": "17_pen_collar.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   28.0,
+   22.0,
+   8.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 2.4
+ },
+ {
+  "file": "18_pivot_sleeve.stl",
+  "watertight": true,
+  "bodies": 1,
+  "extents": [
+   5.0,
+   5.0,
+   9.0
+  ],
+  "min_z": 0.0,
+  "volume_cm3": 0.1
+ }
+]

@@ -1,0 +1,128 @@
+{
+  "gear_mesh": {
+    "module_mm": 1.25,
+    "pressure_angle_deg": 20,
+    "teeth_motor": 25,
+    "teeth_base": 50,
+    "center_distance_mm": 46.875,
+    "base_range_deg": [
+      -35,
+      35
+    ],
+    "required_motor_range_deg": [
+      -70,
+      70
+    ],
+    "sampled_poses": 561,
+    "max_2d_tooth_overlap_mm2": 0,
+    "nominal_contact_ratio": 1.6831622619773203,
+    "nominal_total_backlash_mm": 0.12,
+    "base_backlash_deg": 0.2200157933302361,
+    "tip_error_at_200mm_from_nominal_gear_backlash_mm": 0.768
+  },
+  "reach_samples": [
+    {
+      "shoulder_height_mm": 100,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        33.828,
+        -111.523,
+        -61.506
+      ],
+      "joint_max_degrees": [
+        12.529,
+        63.772,
+        -68.565,
+        -32.965
+      ]
+    },
+    {
+      "shoulder_height_mm": 105,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        32.319,
+        -111.534,
+        -59.879
+      ],
+      "joint_max_degrees": [
+        12.529,
+        61.871,
+        -68.938,
+        -30.906
+      ]
+    },
+    {
+      "shoulder_height_mm": 110,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        30.759,
+        -111.523,
+        -58.299
+      ],
+      "joint_max_degrees": [
+        12.529,
+        59.901,
+        -69.058,
+        -28.909
+      ]
+    },
+    {
+      "shoulder_height_mm": 115,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        29.151,
+        -111.489,
+        -56.77
+      ],
+      "joint_max_degrees": [
+        12.529,
+        57.865,
+        -68.727,
+        -26.98
+      ]
+    },
+    {
+      "shoulder_height_mm": 120,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        27.495,
+        -111.542,
+        -55.291
+      ],
+      "joint_max_degrees": [
+        12.529,
+        55.771,
+        -68.289,
+        -25.124
+      ]
+    },
+    {
+      "shoulder_height_mm": 125,
+      "sampled_targets": 510,
+      "joint_min_degrees": [
+        -27.35,
+        25.793,
+        -111.489,
+        -53.866
+      ],
+      "joint_max_degrees": [
+        12.529,
+        53.623,
+        -67.742,
+        -23.345
+      ]
+    }
+  ],
+  "limitations": [
+    "Geometric checks, not physical performance tests.",
+    "IK uses an ideal vertical 95 mm tool and 120 mm links.",
+    "Actual joint offsets, servo travel, pen length, dock geometry and collision meshes remain unverified.",
+    "No dynamic, structural or thermal validation.",
+    "Horn geometry in assembly is an assumed reference envelope, not a measured interface."
+  ]
+}

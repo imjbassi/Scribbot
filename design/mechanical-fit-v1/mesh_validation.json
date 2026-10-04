@@ -1,0 +1,86 @@
+[
+  {
+    "file": "01_mg90s_mount_plate.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 1,
+    "bounds_mm": [
+      64.0,
+      44.0,
+      4.4
+    ],
+    "solid_volume_cm3": 9.87
+  },
+  {
+    "file": "02_mg996r_mount_plate.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 1,
+    "bounds_mm": [
+      64.0,
+      44.0,
+      4.4
+    ],
+    "solid_volume_cm3": 7.6
+  },
+  {
+    "file": "03_625_bearing_carrier.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 1,
+    "bounds_mm": [
+      34.0,
+      34.0,
+      9.0
+    ],
+    "solid_volume_cm3": 8.29
+  },
+  {
+    "file": "04_625_bearing_cap.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 1,
+    "bounds_mm": [
+      34.0,
+      34.0,
+      2.0
+    ],
+    "solid_volume_cm3": 1.89
+  },
+  {
+    "file": "05_base_plate.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 1,
+    "bounds_mm": [
+      150.0,
+      150.0,
+      7.4
+    ],
+    "solid_volume_cm3": 150.15
+  },
+  {
+    "file": "06_mg90s_spacers_4x.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 4,
+    "bounds_mm": [
+      24.0,
+      24.0,
+      20.0
+    ],
+    "solid_volume_cm3": 5.55
+  },
+  {
+    "file": "07_mg996r_spacers_4x.stl",
+    "watertight": true,
+    "positive_volume": true,
+    "components": 4,
+    "bounds_mm": [
+      24.0,
+      24.0,
+      35.0
+    ],
+    "solid_volume_cm3": 9.71
+  }
+]

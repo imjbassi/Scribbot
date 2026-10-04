@@ -1,0 +1,36 @@
+component,measurement,unit,value,notes
+MG90S,body_length,mm,,Exclude mounting ears
+MG90S,body_width,mm,,Exclude mounting ears
+MG90S,depth_below_ears,mm,,
+MG90S,total_height_to_shaft_top,mm,,
+MG90S,ear_span,mm,,
+MG90S,ear_thickness,mm,,
+MG90S,hole_spacing_length,mm,,Center to center
+MG90S,hole_spacing_width,mm,,If applicable
+MG90S,mount_hole_diameter,mm,,
+MG90S,shaft_axis_from_end,mm,,Name reference face
+MG90S,shaft_axis_from_side,mm,,Name reference face
+MG90S,horn_dimensions_and_holes,text,,Record supplied horn used
+MG90S,wire_exit_clearance,mm,,
+MG996R,body_length,mm,,Measure actual purchased servo
+MG996R,body_width,mm,,
+MG996R,depth_below_ears,mm,,
+MG996R,total_height_to_shaft_top,mm,,
+MG996R,ear_span,mm,,
+MG996R,ear_thickness,mm,,
+MG996R,hole_spacing_length,mm,,
+MG996R,hole_spacing_width,mm,,
+MG996R,mount_hole_diameter,mm,,
+MG996R,shaft_axis_from_end,mm,,
+MG996R,shaft_axis_from_side,mm,,
+MG996R,horn_dimensions_and_holes,text,,
+pen,diameter,mm,,
+pen,total_length,mm,,
+pen,mass,g,,
+pen,grip_to_tip,mm,,
+note,width,mm,,
+note,height,mm,,
+note,single_sheet_thickness,mm,,Optional if difficult to measure
+webcam,mass,g,,
+webcam,mount_envelope,text,,
+resin,brand_and_type,text,,
