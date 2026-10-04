@@ -56,3 +56,7 @@ Servo power goes only into the PCA9685's green screw terminal, never through the
 ## Test program
 
 [`design/wrist-stage/arm_test/arm_test.ino`](design/wrist-stage/arm_test/arm_test.ino) drives all four joints over USB serial (115200 baud, no libraries needed). Commands start with the joint letter: `b` base, `s` shoulder, `e` elbow, `w` wrist. For example `s1300`, `e+`, `wo` (wrist off), or `o` for everything off. Outputs stay off at startup, and every move is slow and stepped.
+
+## License
+
+[MIT](LICENSE): designs, STLs and code are free to use, modify and share, with the copyright notice kept.
