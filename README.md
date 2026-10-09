@@ -2,7 +2,7 @@
 
 A low-cost, mostly 3D-printed desktop robot arm that draws on a 3 × 3 inch sticky note.
 
-![Scribbot with its pen on the sticky note](design/wrist-stage/after_this_stage.png)
+<p align="center"><img src="media/scribbot_star.gif" alt="Scribbot drawing a star on a sticky note" width="340"></p>
 
 - **4 hobby servos:** MG90S base (through a 2:1 printed gear), MG996R shoulder, MG996R elbow, MG90S wrist
 - **Electronics:** Arduino Nano + PCA9685 servo driver, 5 V supply
@@ -34,6 +34,8 @@ Each folder in [`design/`](design) has a `START_HERE.md` with print settings, ha
 The running build log is [`design/CURRENT_BUILD_STATUS.md`](design/CURRENT_BUILD_STATUS.md).
 
 ## Geometry
+
+![Scribbot CAD model with its pen on the sticky note](design/wrist-stage/after_this_stage.png)
 
 | | |
 |---|---|
