@@ -25,8 +25,8 @@ Each folder in [`design/`](design) has a `START_HERE.md` with print settings, ha
 | 7 | Base calibration + repeatability | [`base-calibration`](design/base-calibration) | Done |
 | 8 | Shoulder + load test | [`shoulder-horn-fit`](design/shoulder-horn-fit), [`shoulder-stage`](design/shoulder-stage) | Done |
 | 9 | Elbow | [`elbow-stage`](design/elbow-stage) | Done |
-| 10 | Wrist + pen holder | [`pen-fit`](design/pen-fit), [`wrist-stage`](design/wrist-stage) | Built, testing |
-| 11 | Calibration and drawing software | | Next |
+| 10 | Wrist + pen holder | [`pen-fit`](design/pen-fit), [`wrist-stage`](design/wrist-stage) | Done |
+| 11 | Calibration and drawing software | [`calibration`](design/calibration), [`drawing`](design/drawing) | Done: draws squares, circles, stars and text |
 | 12 | Camera stand + vision | | Planned |
 
 [`rotating-base-v1`](design/rotating-base-v1) and [`compact-base-review`](design/compact-base-review) are earlier base designs kept for reference. Don't build them.
@@ -38,8 +38,8 @@ The running build log is [`design/CURRENT_BUILD_STATUS.md`](design/CURRENT_BUILD
 | | |
 |---|---|
 | Upper arm, forearm | 120 mm each, joint to joint |
-| Shoulder axis | 115 mm above the table |
-| Pen | tip 80 mm from the wrist axis, offset 25 mm forward |
+| Shoulder axis | 127 mm above the table (measured) |
+| Pen | tip 67 mm below the wrist axis (measured), offset 25 mm forward |
 | Drawing area | 60 × 60 mm patch on the sticky note, 135-197 mm out from the base |
 
 ## Wiring
@@ -56,6 +56,24 @@ Servo power goes only into the PCA9685's green screw terminal, never through the
 ## Test program
 
 [`design/wrist-stage/arm_test/arm_test.ino`](design/wrist-stage/arm_test/arm_test.ino) drives all four joints over USB serial (115200 baud, no libraries needed). Commands start with the joint letter: `b` base, `s` shoulder, `e` elbow, `w` wrist. For example `s1300`, `e+`, `wo` (wrist off), or `o` for everything off. Outputs stay off at startup, and every move is slow and stepped.
+
+## Calibration
+
+The servo horns never land exactly on the design angles, so each joint gets an offset and a gain. They come from tape-measure heights of the shoulder, elbow, wrist and pen tip in three poses. In the last pose the wrist works as a level: the pen is set straight down and only the wrist pulse is read. The method and the numbers are in [`design/calibration/measurements.md`](design/calibration/measurements.md).
+
+## Drawing
+
+[`design/drawing/draw/draw.ino`](design/drawing/draw/draw.ino) does the inverse kinematics on the Nano and keeps the pen vertical. Lines are cut into 1 mm steps.
+
+1. Put a sticky note with its center 166 mm (6 1/2 in) straight out from the turntable.
+2. `h` hovers over the note. Lower the pen with `d` (1 mm) or `D` (5 mm) until it just touches the paper, then send `t` to save that height.
+3. Draw:
+   - `q` square
+   - `c` circle
+   - `s` star
+   - `wHELLO` text: letters and numbers, up to 8 characters
+
+`l` / `r` rotate the drawing 1°. `m` / `v` mirror or flip the text. `o` turns every joint off.
 
 ## License
 

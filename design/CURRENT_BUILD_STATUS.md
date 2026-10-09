@@ -1,4 +1,8 @@
-# Current build status — 3 October 2026
+# Current build status — 9 October 2026
+
+FIRST DRAWING DONE (9 Oct): outputs/drawing/draw/draw.ino (IK, commands h d u t q l r ? o) drew a 40 mm square on the note; user: "works perfectly". Calibration from 3 measured poses is in outputs/calibration/measurements.md: shoulder axis 127 mm, pen tip 67 mm below the wrist axis, shoulder_us = 1495 - 13.9*s, elbow_us = 1500 - 10.7*(e + 58.5), wrist_us = 1450 - 10.2*(w + 56.2). The near side of the note needs elbow to about 2130 and wrist to about 905. User checked clearance; limits are now elbow 950-2200, wrist 880-1700 (arm_test.ino and draw.ino). Note center 166 mm (6 1/2 in) straight out from the turntable. Next: more shapes or text, push to GitHub (ask first), then camera stand + vision.
+
+Wrist stage BUILT per user (6 Oct). CORRECTED wrist direction: LOWER pulse turns the pen toward vertical (negative wa, the drawing side); higher pulse swings the tip out (positive wa, collides past about +15 deg). At s1300/e1500 the pen is vertical near w1350, but that pose is too low: the holder sits on the table (wrist axis about 40 mm up, holder reaches 52 mm below it). Use s1100 or higher for vertical-pen tests (wrist axis about 94 mm up, tip about 14 mm above the table). arm_test.ino wrist limits now 950-1600. Part 16 was reprinted after the mirror-image bug. Pen does not drop back freely (user: somewhat firm); retest with the pen vertical, then ease the bore if needed.
 
 Elbow stage PASSED per user (3 Oct): assembled, forearm sits at a right angle on e1500, moves smoothly. Elbow direction: LOWER pulse (e1400) swings the forearm forward/up, toward straight. Base, shoulder and elbow are all built and driven by arm_test.ino.
 

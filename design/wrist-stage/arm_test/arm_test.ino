@@ -18,8 +18,8 @@ const uint8_t PCA_ADDR = 0x40;
 const uint8_t JOINTS = 4;
 const char JOINT_KEY[JOINTS] = {'b', 's', 'e', 'w'};
 const char* const JOINT_NAME[JOINTS] = {"base", "shoulder", "elbow", "wrist"};
-const int MIN_US[JOINTS] = {720, 700, 950, 1350};   // wrist: +/-150 us until its direction is known
-const int MAX_US[JOINTS] = {2280, 1550, 1900, 1650};  // shoulder: 1500 = level, lower = up. elbow: new forearm touches the upper arm past about -135 deg
+const int MIN_US[JOINTS] = {720, 700, 950, 880};   // wrist: LOWER = pen turns toward vertical. Drawing needs down to ~905
+const int MAX_US[JOINTS] = {2280, 1550, 2200, 1700};  // shoulder: 1500 = level, lower = up. elbow: higher = forearm folds down; drawing needs up to ~2130
 const int NUDGE_US = 10;
 
 int currentUs[JOINTS] = {-1, -1, -1, -1};  // -1 = output off
