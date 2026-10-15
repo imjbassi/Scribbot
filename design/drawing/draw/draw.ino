@@ -13,8 +13,15 @@
 //   c       draw a 40 mm circle
 //   s       draw a star
 //   wHI     write text: letters, numbers and spaces, up to 8 characters
+//   M x y   pen up, go to (x, y)    } used by the PC vision program.
+//   L x y   draw a line to (x, y)  } mm from the note center, x right, y up. Replies ok or err.
+//   E       end of a PC drawing: lift and go back to the middle
 //   m       text comes out mirrored? send m once to flip it
 //   v       text comes out upside down? send v once to turn it
+//   R       turn text / copied drawings a quarter turn (send again for more)
+//   k1      base gear slack in degrees (default 1). Short side-to-side lines too short: raise it. Kinks in curves: lower it.
+//   j0.7    pen lead in mm toward/away from the base (default 0.7): makes up for wrist gear slack.
+//           Draw a circle (c): squashed toward/away from the base = raise j; bulging = lower j.
 //   l  r    turn the whole drawing 1 degree left / right
 //   ?       show position and pulses
 //   o       all joints off (the arm DROPS: support it first)
@@ -37,8 +44,10 @@ const float SIZE = 40;            // square side, circle diameter
 const float TEXT_W = 50;          // text never wider than this
 const float TEXT_H = 14;          // or taller than this
 const float HOVER = 25;           // hover height above the paper
-const float LIFT = 6;             // pen-up height while drawing
-const float PRESS = 2;            // go this far below the paper (the holder slides up)
+const float LIFT = 12;            // pen-up height while drawing (6 dragged on big drawings)
+const float PRESS = 4;            // go this far below the paper (the pen slides up in the holder). 2 lost contact on one side
+const int STEP_MS = 35;           // ms per 1 mm step (lower = faster, sloppier)
+const int SETTLE_MS = 250;        // pause after the pen touches down
 
 const int MIN_US[4] = {720, 700, 950, 880};
 const int MAX_US[4] = {2280, 1550, 2200, 1700};
@@ -48,8 +57,14 @@ float paperZ = 0;                 // saved by t
 bool paperSet = false;
 bool armOn = false;
 float baseTrim = 0;               // degrees, from l / r
+float backlash = 1;               // degrees of base gear slack, from k (3 kinked the curves; 0-1 tested best)
+int lastBase = -1;                // last base pulse before slack compensation
+int8_t baseDir = 0;               // which way the base last moved
 bool mirrorText = false;          // m
 bool flipText = false;            // v
+uint8_t quarterTurns = 3;         // R (3 matched the camera's view of the input note)
+float radialLead = 0.7;           // mm, from j. The pen tip trails in the radial direction by the wrist slack (1.5 left a notch)
+int8_t radialDir = 0;             // which way (out from the base = +1) the pen last moved
 int us[4];
 
 // Stroke font on a 4 x 6 grid. Each point is two digits (x, y), y up.
@@ -154,24 +169,35 @@ void report() {
 bool lineTo(float x, float y, float z) {
   float dx = x - px, dy = y - py, dz = z - pz;
   int steps = max(1, (int)ceil(sqrt(dx * dx + dy * dy + dz * dz)));
+  // Wrist slack: the tip trails behind radial motion, so aim ahead of the target in that direction.
+  float dr = sqrt(x * x + y * y) - sqrt(px * px + py * py);
+  if (dr > 0.05) radialDir = 1; else if (dr < -0.05) radialDir = -1;
   int t[4];
   for (int i = 1; i <= steps; i++) {
     float f = (float)i / steps;
-    if (!solve(px + dx * f, py + dy * f, pz + dz * f, t)) {
+    float sx = px + dx * f, sy = py + dy * f, r = sqrt(sx * sx + sy * sy);
+    float lead = (r > 1) ? (r + radialDir * radialLead) / r : 1;
+    if (!solve(sx * lead, sy * lead, pz + dz * f, t)) {
       Serial.println(F("Out of reach. Stopped."));
       return false;
     }
+    // Gear slack: when the base reverses, overshoot by the slack so the platform really moves.
+    if (lastBase >= 0 && t[0] != lastBase) baseDir = (t[0] > lastBase) ? 1 : -1;
+    lastBase = t[0];
+    t[0] = constrain(t[0] + (int)(baseDir * backlash * 22.2 / 2), MIN_US[0], MAX_US[0]);
     for (uint8_t j = 0; j < 4; j++) { us[j] = t[j]; writeUs(j, t[j]); }
-    delay(20);
+    delay(STEP_MS);
   }
   px = x; py = y; pz = z;
   return true;
 }
 
-// Pen up, travel to (x, y), pen down.
+// Pen up, travel to (x, y), pen down, then a pause so the servos settle before the line starts.
 bool penTo(float x, float y) {
   float up = paperZ + LIFT;
-  return lineTo(px, py, up) && lineTo(x, y, up) && lineTo(x, y, paperZ - PRESS);
+  bool ok = lineTo(px, py, up) && lineTo(x, y, up) && lineTo(x, y, paperZ - PRESS);
+  delay(SETTLE_MS);
+  return ok;
 }
 
 // Draw (pen already down) to (x, y).
@@ -197,6 +223,8 @@ void powerOn(float x, float y, float z) {
     delay(700);
   }
   px = x; py = y; pz = z;
+  lastBase = t[0];
+  baseDir = 0;
   armOn = true;
 }
 
@@ -231,12 +259,17 @@ void star() {
 
 // Text. The reader's "up" on the paper points toward the base (-x), "right" is +y.
 // m and v flip these if the test comes out wrong.
-void textPoint(float gx, float gy, float u, float left, float bottom, float& x, float& y) {
-  float right = left + gx * u, up = bottom + gy * u;   // mm in the reader's frame, centered on the note
+// (right, up) in mm in the reader's frame, centered on the note -> arm (x, y).
+void readerToArm(float right, float up, float& x, float& y) {
+  for (uint8_t i = 0; i < quarterTurns; i++) { float t = right; right = up; up = -t; }
   if (flipText) { right = -right; up = -up; }
   if (mirrorText) right = -right;
   x = NOTE_X - up;
   y = NOTE_Y + right;
+}
+
+void textPoint(float gx, float gy, float u, float left, float bottom, float& x, float& y) {
+  readerToArm(left + gx * u, bottom + gy * u, x, y);
 }
 
 void writeText(String s) {
@@ -297,6 +330,7 @@ void loop() {
   if (c == 'o') { allOff(); Serial.println(F("ALL joints OFF.")); return; }
   if (c == 'm') { mirrorText = !mirrorText; Serial.println(mirrorText ? F("Text mirror ON.") : F("Text mirror OFF.")); return; }
   if (c == 'v') { flipText = !flipText; Serial.println(flipText ? F("Text turned 180.") : F("Text normal.")); return; }
+  if (c == 'R') { quarterTurns = (quarterTurns + 1) % 4; Serial.print(F("Quarter turns: ")); Serial.println(quarterTurns); return; }
   if (c == 'h') {
     float z = (paperSet ? paperZ : 0) + HOVER;
     if (!armOn) powerOn(NOTE_X, NOTE_Y, z);
@@ -305,7 +339,7 @@ void loop() {
     return;
   }
   if (!armOn) { Serial.println(F("Arm is off. Send h first.")); return; }
-  if ((c == 'q' || c == 'c' || c == 's' || c == 'w') && !paperSet) { Serial.println(F("Do t first.")); return; }
+  if ((c == 'q' || c == 'c' || c == 's' || c == 'w' || c == 'M' || c == 'L' || c == 'E') && !paperSet) { Serial.println(F("Do t first.")); return; }
 
   switch (c) {
     case 'd': lineTo(px, py, pz - 1); break;
@@ -320,7 +354,24 @@ void loop() {
     case 'q': square(); break;
     case 'c': circle(); break;
     case 's': star(); break;
+    case 'M': case 'L': {
+      int sp = cmd.indexOf(' ', 1);
+      float x, y;
+      readerToArm(cmd.substring(1, sp).toFloat(), cmd.substring(sp + 1).toFloat(), x, y);
+      bool ok = (sp > 0) && (c == 'M' ? penTo(x, y) : drawTo(x, y));
+      Serial.println(ok ? F("ok") : F("err"));
+      return;
+    }
+    case 'E': finish(F("Drawing done.")); Serial.println(F("ok")); return;
     case 'w': writeText(cmd.substring(1)); break;
+    case 'j':
+      radialLead = constrain(cmd.substring(1).toFloat(), 0, 6);
+      Serial.print(F("Pen lead = ")); Serial.print(radialLead, 1); Serial.println(F(" mm"));
+      return;
+    case 'k':
+      backlash = constrain(cmd.substring(1).toFloat(), 0, 8);
+      Serial.print(F("Base slack = ")); Serial.print(backlash, 1); Serial.println(F(" deg"));
+      return;
     case 'l': case 'r': {
       float old = baseTrim;
       baseTrim += (c == 'l') ? -1 : 1;
@@ -328,7 +379,7 @@ void loop() {
       break;
     }
     case '?': break;
-    default: Serial.println(F("Commands: h d u D U t q c s wTEXT m v l r ? o")); return;
+    default: Serial.println(F("Commands: h d u D U t q c s wTEXT k m v l r ? o")); return;
   }
   report();
 }

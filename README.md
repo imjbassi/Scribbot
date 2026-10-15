@@ -8,7 +8,7 @@ A low-cost, mostly 3D-printed desktop robot arm that draws on a 3 × 3 inch stic
 - **Electronics:** Arduino Nano + PCA9685 servo driver, 5 V supply
 - **Pen:** a standard Sharpie in a gravity holder. It slides up a few millimeters when it touches the paper, so it presses with just its own weight.
 - **Everything printable** is in OpenSCAD source plus ready-to-print STLs (PLA, 0.4 mm nozzle, 0.12 mm layers, no supports)
-- **Planned:** a webcam stand and vision, so it can find the paper and draw what it sees
+- **Vision:** a webcam on a printed stand looks at a doodle on a second sticky note, and the arm redraws it
 
 ## Build stages
 
@@ -27,7 +27,7 @@ Each folder in [`design/`](design) has a `START_HERE.md` with print settings, ha
 | 9 | Elbow | [`elbow-stage`](design/elbow-stage) | Done |
 | 10 | Wrist + pen holder | [`pen-fit`](design/pen-fit), [`wrist-stage`](design/wrist-stage) | Done |
 | 11 | Calibration and drawing software | [`calibration`](design/calibration), [`drawing`](design/drawing) | Done: draws squares, circles, stars and text |
-| 12 | Camera stand + vision | | Planned |
+| 12 | Camera stand + vision | [`camera-stand`](design/camera-stand), [`vision`](design/vision) | Done: copies a doodle from one note to another |
 
 [`rotating-base-v1`](design/rotating-base-v1) and [`compact-base-review`](design/compact-base-review) are earlier base designs kept for reference. Don't build them.
 
@@ -75,7 +75,22 @@ The servo horns never land exactly on the design angles, so each joint gets an o
    - `s` star
    - `wHELLO` text: letters and numbers, up to 8 characters
 
-`l` / `r` rotate the drawing 1°. `m` / `v` mirror or flip the text. `o` turns every joint off.
+`l` / `r` rotate the drawing 1°. `m` / `v` / `R` mirror, flip or quarter-turn the drawing. `o` turns every joint off.
+
+Two settings make up for gear slack in the hobby servos: `k` (base gears, degrees) and `j` (pen lead toward/away from the base, mm, for the wrist servo). Tune them by drawing a circle with `c`: kinks mean too much, a squashed circle means too little.
+
+## Copy a drawing
+
+![A hand-drawn stick figure and Scribbot's copy](media/copy_demo.jpg)
+
+A webcam (Logitech Brio 101) on the printed stand in [`design/camera-stand`](design/camera-stand) looks straight down at a sticky note. [`design/vision/copy_drawing.py`](design/vision/copy_drawing.py) finds the note in the picture, straightens it, thins the ink down to lines, and streams them to the arm over USB. It needs Python with `opencv-python`, `scikit-image`, `pyserial` and `imageio-ffmpeg`.
+
+```
+python copy_drawing.py --aim     # live view: tilt the camera until the note has a green outline
+python copy_drawing.py           # then: h, d until the pen touches, t, see, go
+```
+
+`see` shows what it traced before anything moves; `go` draws it, scaled to fill the arm's note.
 
 ## License
 
