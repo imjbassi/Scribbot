@@ -39,7 +39,7 @@ The calculation assumes the distal assembly is centered below the wrist when dra
 
 ## Exact measurements needed
 
-Measure one representative MG90S, then check the others for differences. Repeat for the actual purchased shoulder/elbow servos. Record in MEASUREMENTS.csv, in millimeters. A digital caliper is helpful.
+Measure one representative MG90S, then check the others for differences. Repeat for the actual purchased shoulder/elbow servos. Record the numbers in millimeters; the accepted fits are in FIT_RESULTS.md. A digital caliper is helpful.
 
 1. Body length and width below the mounting ears, excluding wires.
 2. Body depth below mounting ears and total height to top of output shaft.

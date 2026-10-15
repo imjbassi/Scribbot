@@ -1,0 +1,7 @@
+# Normalize line endings; keep CAD, images and documents as binary
+* text=auto eol=lf
+*.stl binary
+*.png binary
+*.jpg binary
+*.gif binary
+*.pdf binary
